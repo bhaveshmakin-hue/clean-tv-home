@@ -1,14 +1,14 @@
 # clean-tv-home
 
-Two Android TVs moved off the cluttered stock Google TV and Projectivy home screens onto a clean home screen styled after Apple TV, with the manufacturers' trackers and bloatware switched off. Everything was done over ADB from a Windows PC with [cleanyourtv](https://github.com/Gathin23/cleanyourtv) and its reference launcher. Nothing was rooted, flashed or uninstalled: every change is `pm disable-user` and can be undone.
+Three Android TVs moved off the cluttered stock Google TV and Projectivy home screens onto a clean home screen styled after Apple TV, with the manufacturers' trackers and bloatware switched off. Everything was done over ADB from a Windows PC with [cleanyourtv](https://github.com/Gathin23/cleanyourtv) and its reference launcher. Nothing was rooted, flashed or uninstalled: every change is `pm disable-user` and can be undone.
 
-| | Motorola SW-22AE NF | Acer M1G |
-|---|---|---|
-| Built by | Skyworth (board SW6H, MediaTek) | MOKA (board dahu, Realtek) |
-| Android | Android TV 14, build UTT1.250517.001 | Google TV 14, build UKR9.250818.062 |
-| RAM | ~1.9 GB | ~1.9 GB |
-| Packages disabled | 28 | 20 |
-| Survived a reboot | yes, all 28 | yes, all 20 |
+| | Motorola SW-22AE NF | Acer M1G | Acer R4G |
+|---|---|---|---|
+| Built by | Skyworth (board SW6H, MediaTek) | MOKA (board dahu, Realtek) | MOKA (board R4_GTV, Realtek) |
+| Android | Android TV 14, build UTT1.250517.001 | Google TV 14, build UKR9.250818.062 | Google TV 14, build UKR1.260308 |
+| RAM | ~1.9 GB | ~1.9 GB | 2 GB |
+| Packages disabled | 28 | 20 | 13 |
+| Survived a reboot | yes, all 28 | yes, all 20 | yes, plus 13 background-blocked |
 
 ## Motorola SW-22AE NF
 
@@ -46,6 +46,25 @@ The full list, with reasons, is in [`motorola-sw-22ae-nf/debloat.txt`](motorola-
 
 The full list is in [`acer-m1g/debloat.txt`](acer-m1g/debloat.txt).
 
+## Acer R4G
+
+| Before | After |
+|---|---|
+| ![Stock Google TV home with sponsored row](acer-r4g/screenshots/1-before-google-tv.jpg) | ![Clean home with the GMG/GMS logo wallpaper](acer-r4g/screenshots/2-after-clean-home.jpg) |
+
+**Disabled:**
+- Android's ad services, the SCBC partner auto-installer and an ad-click boot receiver
+- Google partner pings, the partner row injector, the hotspot, Health Connect and the USB media player
+- by choice: Netflix (and its token manager)
+
+**Blocked from running in the background instead:** this firmware re-enables some packages at every cold boot, so gdpr consent, feedback, partner setup, the demo stickers, signage, TV Manager, World Clock, Audio Link, Play Games, YouTube Music, Play Movies and Netflix get `RUN_ANY_IN_BACKGROUND ignore`. That survives reboots; see [`appops-blocked.txt`](acer-r4g/appops-blocked.txt).
+
+**Home:** like the M1G, the stock home and setup wizard stay enabled and the launcher takes the Home button with its redirect. `home_long_press_home` stops the stock home flashing on each Home press. The theme also hides the re-enabled apps from Home and uses the logo wallpaper; see [`theme-config.json`](acer-r4g/theme-config.json).
+
+**Speed:** animations run at 0.5x.
+
+The full list is in [`acer-r4g/debloat.txt`](acer-r4g/debloat.txt).
+
 ## The home screen
 
 The launcher is [cleanyourtv's](https://github.com/Gathin23/cleanyourtv/tree/main/launcher) `com.gathin.tvhome`, built from source:
@@ -66,7 +85,7 @@ The APK installed on both TVs is attached to the [latest release](https://github
 
 **What's built in:**
 - the Motorola's settings: the greeting name, the App library, Tapo on Home, and power-on to Home
-- On the Acer, the `acer-m1g/theme-config.json` overlay changes the dock and the Home redirect.
+- On the Acers, the `theme-config.json` overlays change the dock, the wallpaper and the Home redirect.
 
 **Signing:** the APK is signed with a debug key, so it's for sideloading, not the Play Store.
 
@@ -82,14 +101,15 @@ Then make it Home, as in step 4 under "Reproduce it". To change the settings bak
 2. Clone [cleanyourtv](https://github.com/Gathin23/cleanyourtv) and follow its `PROMPT.md`.
 3. Apply a list with `tools/disable.ps1` (or `disable.sh`) in small batches.
 4. Build and install the launcher with `launcher/build-and-install.ps1 -HomeKeyService`.
-5. On the Acer, push the theme overlay with `tools/theme.ps1`.
+5. On the Acers, push the theme overlay with `tools/theme.ps1`.
 6. When you're done, switch debugging off again.
 
 To undo, run `tools/restore.ps1 <list>`. Any app can also be re-enabled in Settings → Apps.
 
 ## Notes
 
-- **Firmware updates stay on** on both TVs.
+- **Firmware updates stay on** on all three TVs.
+- **Casting on the R4G:** Chromecast shows as "Acer TV". If it drops off a phone's Cast list, restart the TV or the mesh Wi-Fi units. The phone's own Screen Cast panel is Miracast, which only works while the FastCast app is open.
 - **Boot animation:** neither the boot animation nor the Motorola's "firmware updating, don't shut down" boot screen can be changed. They sit on read-only partitions, and the bootloaders are locked with no OEM unlock.
 - **Privacy:** the Wi-Fi name is pixelated in the screenshots.
 

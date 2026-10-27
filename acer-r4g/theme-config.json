@@ -1,0 +1,9 @@
+{
+  "dock_apps": ["com.google.android.youtube.tv", "com.amazon.amazonvideo.livingroom", "in.startv.hotstar", "com.android.vending"],
+  "hidden_apps": ["com.netflix.ninja", "com.google.android.youtube.tvmusic", "com.google.android.play.games", "com.apps.tvmanager", "com.mk.tv.timeclock", "com.apps.function.audiolink", "com.google.android.videos"],
+  "live_tv_package": "com.realtek.tv",
+  "stock_home_redirect": "com.google.android.apps.tv.launcherx",
+  "home_long_press_home": true,
+  "power_on_home_always": true,
+  "wallpaper": true
+}

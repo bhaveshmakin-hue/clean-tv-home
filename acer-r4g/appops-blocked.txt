@@ -1,0 +1,16 @@
+# Re-enabled by the R4G firmware at every cold boot, so background running is blocked instead.
+# Undo: cmd appops set <pkg> RUN_ANY_IN_BACKGROUND default; same for RUN_IN_BACKGROUND; cmd appops write-settings
+com.google.android.partnersetup
+com.apps.function.gdpr
+com.google.android.feedback
+com.apps.esticker
+com.apps.esticker3
+com.mk.tv.meeting.service
+com.apps.tvmanager
+com.mk.tv.timeclock
+com.apps.function.audiolink
+com.google.android.play.games
+
+com.google.android.videos
+com.google.android.youtube.tvmusic
+com.netflix.ninja

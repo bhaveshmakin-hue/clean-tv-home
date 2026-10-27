@@ -1,0 +1,40 @@
+# Acer R4G (MOKA R4_GTV, Realtek rtd2851m, 2 GB), Google TV 14, build UKR1.260308 (5597)
+# Applied 2026-10-27 in two batches with screenshots, then a cold boot: 11 stayed disabled; 10 came back
+# (the firmware's re-enable list, docs/devices/acer-r4g.md) and were blocked from background running
+# instead (work/acer-r4g/appops-blocked.txt).
+# Kept enabled on purpose: launcherx and setupwraith; com.gathin.tvhome takes Home via HomeKeyService +
+# stock_home_redirect. Kept: all streaming apps, Assistant, Chromecast, FastCast/SCast, HDMI, OTA, key handlers.
+# Undo: restore-acer-r4g.ps1 in the folder above.
+# Trackers, ads, auto-installs (the gdpr and feedback lines come back at every cold boot on this firmware)
+com.android.adservices.api
+com.android.ondevicepersonalization.services
+com.android.federatedcompute.services
+com.google.android.partnersetup              # Google partner setup / RLZ pings
+com.android.tv.feedbackconsent
+android.autoinstalls.config.scbc.device      # Play auto-installs of partner apps
+com.apps.mk.wd                               # boot receiver with ClickAd/ClickApp/ClickChannel activities
+com.apps.function.gdpr                       # SCBC data-consent agent (re-enabled at cold boot)
+com.google.android.feedback                  # (re-enabled at cold boot)
+# Demos, clutter, unused (esticker*, meeting.service, tvmanager, timeclock, audiolink, play.games come back at cold boot)
+com.realtek.leanbacklauncher.partnercustomizer # injects partner apps and rows into the stock home
+com.apps.esticker                            # demo sticker overlay
+com.apps.esticker3
+com.mk.tv.meeting.service                    # digital-signage service with an accessibility service
+com.apps.tvmanager                           # TV manager / cleaner
+com.mk.tv.timeclock                          # WorldClock
+com.apps.function.audiolink                  # Audio Link
+com.apps.wifihotspot                         # TV as a Wi-Fi hotspot
+com.android.healthconnect.controller
+com.android.health.connect.backuprestore
+com.google.android.play.games
+com.apps.usbmediaplayer                      # USB media player, owner's choice
+
+# Owner's choice, for speed: YouTube Music and Play Movies (videos is on the firmware's re-enable list, so it is also background-blocked)
+com.google.android.youtube.tvmusic
+com.google.android.videos
+
+
+# Owner disabled Netflix (2026-10-27)
+com.netflix.ninja
+com.netflix.tokenmanager
+
