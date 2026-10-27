@@ -1,0 +1,6 @@
+{
+  "dock_apps": ["com.google.android.youtube.tv", "com.tplink.iot", "com.android.vending", "com.android.tv.settings"],
+  "live_tv_package": "com.android.tv",
+  "stock_home_redirect": "com.google.android.apps.tv.launcherx",
+  "power_on_home_always": true
+}

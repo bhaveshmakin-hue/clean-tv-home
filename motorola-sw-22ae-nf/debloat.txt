@@ -1,0 +1,41 @@
+﻿# Motorola SW-22AE NF (Skyworth OEM, device SW6H, MediaTek, ~1.9 GB), Android TV 14 (API 34), build UTT1.250517.001
+# Based on examples/skyworth-sw-22sa (same board and build). Applied in five batches, screenshot after each.
+# Undo: tools\restore.ps1 -TvHost <tv ip> work\debloat.txt  (or restore-tv.ps1 in the folder above)
+# Kept on purpose: Live TV (com.smartdevice.livetv), HDMI (com.mediatek.tvinput, tv.service, globalkeyoverlay),
+# remote/BLE (duplebluetooth, bleconnectservice, tv.remote.service), quick menu (dailyshortcut),
+# Chromecast (mediashell), mirroring (dtv.icast, mediatek.androidbox), YouTube, Play Store/Services, keyboards,
+# com.smartdevice.factory and mediatek.factorymenu.ui (never touched), Projectivy + Sideload launchers.
+# Firmware updates: no separate updater on this board; Settings > System > System update stays.
+# Skyworth telemetry, after-sale push, Android ad/personalisation services
+com.smartdevice.aftersale                    # service tool: boot + network receivers, can install APKs
+com.smartdevice.dailymanage                  # "Daily Manage" boot service
+com.google.android.feedback
+com.android.tv.feedbackconsent
+com.android.adservices.api
+com.android.ondevicepersonalization.services
+com.android.federatedcompute.services
+# Skyworth content rows, demos, manuals, disclaimers
+com.smartdevice.recommendation               # Coocaa recommendation rows; bundles Sensors Data analytics
+com.smartdevice.leanbacklauncher.customizer  # partner config that injects rows into the home screen
+com.smartdevice.epopplayer                   # ePop shop demo player
+fusion.android.tv.demo                       # shop demo player
+com.coocaa.demonow.lightining                # "Demo Now" retail mode
+com.Smartdevice.emanual                      # on-screen manual
+com.mstar.android.tv.disclaimercustomization # retail disclaimer dialogs
+com.smartdevice.setupwraith                  # Skyworth first-run/privacy wizard; setup is finished
+com.smartdevice.myapp                        # Skyworth app manager
+# Not needed, plus streaming apps the owner does not use
+com.android.healthconnect.controller
+com.android.health.connect.backuprestore
+org.liskovsoft.androidtv.rukeyboard          # Russian keyboard
+com.google.android.play.games                # owner's choice
+com.google.android.youtube.tvmusic           # owner's choice
+com.netflix.ninja                            # owner's choice
+com.amazon.amazonvideo.livingroom            # owner's choice
+# Owner's choice: no voice assistant, no Google screensaver (mic button stops working)
+com.google.android.katniss
+com.google.android.tv.assistant
+com.google.android.apps.tv.dreamx
+# Stock Google TV home and setup wizard: only after com.gathin.tvhome is confirmed as Home
+com.google.android.apps.tv.launcherx
+com.google.android.tungsten.setupwraith

@@ -1,0 +1,31 @@
+﻿# Acer M1G (MOKA, device dahu, Realtek), Google TV 14 (API 34), build UKR9.250818.062, ~1.9 GB RAM
+# Applied 2026-10-27 in three batches with a screenshot after each; all 20 stayed disabled after a cold boot.
+# Undo: tools\restore.ps1 work\acer\debloat.txt -Stock com.google.android.apps.tv.launcherx
+# Kept enabled on purpose: launcherx and setupwraith (setupwraith owns the saved Wi-Fi and the Cast credentials;
+# set-home-activity does not stick, so com.gathin.tvhome takes Home via HomeKeyService + stock_home_redirect).
+# Projectivy stays installed; only its accessibility (Home-button) service was switched off.
+# Kept: Chromecast (mediashell), Miracast (com.realtek.miracast), HDMI (realtek.tv.passthrough), realtek menu/keys,
+# remote services, Gboard, Play Store/Services, OTA (com.realsil.ota), com.apps.factory.ui (never touched).
+# Trackers, ads, feedback
+tv.anoki.acr.anokiacroptin                   # Anoki ACR: automatic content recognition of what is on screen, starts at boot
+com.google.android.feedback
+com.android.tv.feedbackconsent
+com.android.adservices.api
+com.android.ondevicepersonalization.services
+com.android.federatedcompute.services
+com.google.android.partnersetup              # Google partner setup / RLZ pings
+# Realtek/MOKA content, demos, preloads
+com.realtek.leanbacklauncher.partnercustomizer # injects partner apps and rows into the stock home
+com.realtek.retailmode                       # shop demo stickers
+com.realtek.officeweb                        # OfficeWeb document viewer preload
+com.realtek.userguide                        # on-TV user guide
+com.android.healthconnect.controller
+com.android.health.connect.backuprestore
+com.google.android.play.games
+# Owner's choice (same as the Motorola): no Netflix, YouTube Music, Assistant, screensaver, USB media player
+com.netflix.ninja
+com.netflix.tokenmanager
+com.google.android.youtube.tvmusic
+com.google.android.katniss                   # voice assistant: the mic button stops working
+com.google.android.apps.tv.dreamx            # Google screensaver / ambient mode
+com.rtk.mediabrowser                         # USB Media Player

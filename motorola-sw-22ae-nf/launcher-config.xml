@@ -1,0 +1,17 @@
+﻿<!-- Changes made to cleanyourtv/launcher/app/src/main/res/values/config.xml for the Motorola SW-22AE NF.
+     The Acer M1G uses the same build plus acer-m1g/theme-config.json pushed with tools/theme.ps1. -->
+<string-array name="dock_apps">
+    <item>com.google.android.youtube.tv</item>
+    <item>com.android.vending</item>
+    <item>com.smartdevice.livetv</item>
+    <item>com.android.tv.settings</item>
+</string-array>
+<string-array name="hidden_apps" />
+<string name="live_tv_package">com.smartdevice.livetv</string>
+<bool name="power_on_home">true</bool>          <!-- needs HOME_KEY_SERVICE=1 (build-and-install -HomeKeyService) -->
+<string name="greeting_name">Bhavesh Makin</string>
+<bool name="tile_menu">true</bool>
+<bool name="app_library">true</bool>
+<string-array name="library_apps">
+    <item>com.tplink.iot</item>                  <!-- Tapo, a phone app with no TV tile -->
+</string-array>
