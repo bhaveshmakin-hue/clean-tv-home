@@ -60,6 +60,22 @@ The launcher is [cleanyourtv's](https://github.com/Gathin23/cleanyourtv/tree/mai
   - hold OK on a tile to move or remove it
 - **Power-on:** the TV opens Home instead of Live TV.
 
+## Download the launcher
+
+The APK installed on both TVs is attached to the [latest release](https://github.com/bhaveshmakin-hue/clean-tv-home/releases/latest) as `clean-tv-home-launcher.apk` (package `com.gathin.tvhome`, Android 8.0+).
+
+**What's built in:**
+- the Motorola's settings: the greeting name, the App library, Tapo on Home, and power-on to Home
+- On the Acer, the `acer-m1g/theme-config.json` overlay changes the dock and the Home redirect.
+
+**Signing:** the APK is signed with a debug key, so it's for sideloading, not the Play Store.
+
+**Install it:**
+```bash
+adb install -r clean-tv-home-launcher.apk
+```
+Then make it Home, as in step 4 under "Reproduce it". To change the settings baked in at build time, build it yourself from [cleanyourtv](https://github.com/Gathin23/cleanyourtv).
+
 ## Reproduce it
 
 1. Turn on Developer options and USB/Network debugging on the TV.
@@ -77,4 +93,4 @@ To undo, run `tools/restore.ps1 <list>`. Any app can also be re-enabled in Setti
 - **Boot animation:** neither the boot animation nor the Motorola's "firmware updating, don't shut down" boot screen can be changed. They sit on read-only partitions, and the bootloaders are locked with no OEM unlock.
 - **Privacy:** the Wi-Fi name is pixelated in the screenshots.
 
-Debloat lists and launcher: [cleanyourtv](https://github.com/Gathin23/cleanyourtv), MIT licence.
+Debloat lists and launcher: [cleanyourtv](https://github.com/Gathin23/cleanyourtv), MIT licence ([`licenses/cleanyourtv-MIT.txt`](licenses/cleanyourtv-MIT.txt)). The launcher bundles the Outfit typeface under the SIL Open Font License ([`licenses/Outfit-font-OFL.txt`](licenses/Outfit-font-OFL.txt)).
